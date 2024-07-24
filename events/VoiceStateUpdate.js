@@ -11,7 +11,7 @@ module.exports = {
             console.log('Voice channel changed');
         }
 
-        if (newState.channelId !== null) {
+        if (newState.channelId !== null && newState.channelId !== oldState.channelId) {
             console.log('Voice channel joined');
             newState.client.channels.fetch(newState.channelId).then(channel => {
                 channel.send(`[<t:${Math.floor(Date.now() / 1000)}:R>] ${newState.member.user} joined the voice channel!`);
