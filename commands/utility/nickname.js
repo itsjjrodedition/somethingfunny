@@ -77,6 +77,9 @@ module.exports = {
             await interaction.deferReply( { ephemeral: true } );
             const members = await interaction.guild.members.fetch();
             members.each(async (member) => {
+                interaction.followUp({
+                    content: `Manageable: ${member.manageable}, Nickname: ${member.nickname}, Display name: ${member.displayName}`, ephemeral: true
+                });
                 if(!member.manageable) return;
                 await member.setNickname(null);
             });
