@@ -68,7 +68,7 @@ module.exports = {
                 if(!member.manageable) return;
                 await member.setNickname(nickname);
             });
-            await interaction.editReply({ content: `Set nickname of all members to ${nickname}.`, ephemeral: true });
+            await interaction.editReply({ content: `Setting nickname of all members to ${nickname}.`, ephemeral: true });
         } else if (interaction.options.getSubcommand() === 'remove') {
             const user = interaction.options.getUser('user');
             await interaction.guild.members.cache.get(user.id).setNickname(null);
@@ -83,7 +83,7 @@ module.exports = {
                 if(!member.manageable) return;
                 await member.setNickname(null);
             });
-            await interaction.editReply({ content: `Removed nickname of all members.`, ephemeral: true });
+            await interaction.editReply({ content: `Removing nickname of all members.`, ephemeral: true });
         }
     }
 }
