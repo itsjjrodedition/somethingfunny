@@ -57,7 +57,7 @@ module.exports = {
             await interaction.guild.members.cache.get(user.id).setNickname(nickname);
             await interaction.reply({ content: `Set nickname of ${user.tag} to ${nickname}.`, ephemeral: true});
         } else if (interaction.options.getSubcommand() === 'all') {
-            interaction.deferReply( { ephemeral: true } );
+            await interaction.deferReply( { ephemeral: true } );
             const nickname = interaction.options.getString('nickname');
             const members = await interaction.guild.members.fetch();
             console.log(members);
@@ -74,7 +74,7 @@ module.exports = {
             await interaction.guild.members.cache.get(user.id).setNickname(null);
             await interaction.reply({ content: `Removed nickname of ${user.tag}.`, ephemeral: true});
         } else if (interaction.options.getSubcommand() === 'removeall') {
-            interaction.deferReply( { ephemeral: true } );
+            await interaction.deferReply( { ephemeral: true } );
             const members = await interaction.guild.members.fetch();
             members.each(async (member) => {
                 if(!member.manageable) return;
