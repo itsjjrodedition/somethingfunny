@@ -8,7 +8,7 @@ module.exports = {
         .addSubcommand(subcommand =>
             subcommand
                 .setName('recent')
-                .setDescription('Clears most recent x messages.  (Doesnt work for older messages)')
+                .setDescription('Clears most recent x messages. (Doesnt work for older messages)')
                 .addIntegerOption(option =>
                     option
                         .setName('amount')
@@ -22,7 +22,7 @@ module.exports = {
         .addSubcommand(subcommand =>
             subcommand
                 .setName('user')
-                .setDescription('Clears all messages from a user.')
+                .setDescription('Clears all messages from a user. (Doesnt work for older messages)')
                 .addUserOption(option =>
                     option
                         .setName('user')
@@ -34,7 +34,7 @@ module.exports = {
         .addSubcommand(subcommand =>
             subcommand
                 .setName('byword')
-                .setDescription('Clears all messages with a certain word.')
+                .setDescription('Clears all messages with a certain word. (Doesnt work for older messages)')
                 .addStringOption(option =>
                     option
                         .setName('word')
