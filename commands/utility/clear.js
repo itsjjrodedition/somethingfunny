@@ -16,6 +16,6 @@ module.exports = {
         const amount = interaction.options.getInteger('amount');
         await interaction.channel.bulkDelete(amount, true);
         await interaction.deferReply();
-        await interaction.editReply({ content: `Cleared ${amount} messages.`});
+        await interaction.editReply({ content: `Cleared ${amount} messages.`}).then(() => { setTimeout(() => { interaction.deleteReply(); }, 5000); })
     }
 }
