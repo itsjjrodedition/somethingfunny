@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder() 
         .setName('clear')
-        .setDescription('Clears messages.')
+        .setDescription('Clears most recent x messages.  (Doesnt work for older messages)')
         .addIntegerOption(option =>
             option
                 .setName('amount')
@@ -15,6 +15,7 @@ module.exports = {
     async execute(interaction) {
         const amount = interaction.options.getInteger('amount');
         await interaction.channel.bulkDelete(amount, true);
-        await interaction.reply({ content: `Cleared ${amount} messages.`, ephemeral: true });
+        await interaction.deferReply();
+        await interaction.editReply({ content: `Cleared ${amount} messages.`});
     }
 }
