@@ -1,4 +1,14 @@
 {
   "washerState": "off",
-  "dryerState": "off"
+  "dryerState": "on",
+  "notify": {
+    "washer": {
+      "jared": false,
+      "spencer": false
+    },
+    "dryer": {
+      "jared": false,
+      "spencer": false
+    }
+  }
 }

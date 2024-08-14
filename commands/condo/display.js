@@ -17,6 +17,7 @@ module.exports = {
 
 
     async execute(interaction) {
+
         if (interaction.options.getSubcommand() === "washer") {
             const embed = new EmbedBuilder()
                 .setColor("#0000FF")
@@ -32,12 +33,15 @@ module.exports = {
             .setLabel('Off')
             .setEmoji('🔴')
             .setStyle(ButtonStyle.Danger);
+
+        var notifyWasherButton = new ButtonBuilder()
+            .setCustomId('notifyWasher')
+            .setLabel('Notify')
+            .setEmoji('🔔')
+            .setStyle(ButtonStyle.Secondary);
        
         const row = new ActionRowBuilder()
-            .addComponents( washerOnButton, washerOffButton.setDisabled(true) );
-        // const row2 = new ActionRowBuilder()
-        //     .addComponents( washerOnButton.setDisabled(true), washerOffButton );
-
+            .addComponents( washerOnButton, washerOffButton.setDisabled(true), notifyWasherButton );
         await interaction.reply({ embeds: [embed], components: [row] });
 
         } else if (interaction.options.getSubcommand() === "dryer") {
@@ -57,11 +61,14 @@ module.exports = {
                 .setEmoji('🔴')
                 .setStyle(ButtonStyle.Danger);
 
-            const row = new ActionRowBuilder()
-                .addComponents( dryerOnButton, dryerOffButton.setDisabled(true) );
+            var notifyDryerButton = new ButtonBuilder()
+                .setCustomId('notifyDryer')
+                .setLabel('Notify')
+                .setEmoji('🔔')
+                .setStyle(ButtonStyle.Secondary);
 
-            // const row2 = new ActionRowBuilder() 
-            //     .addComponents( dryerOnButton.setDisabled(true), dryerOffButton );
+            const row = new ActionRowBuilder()
+                .addComponents( dryerOnButton, dryerOffButton.setDisabled(true), notifyDryerButton );
 
             await interaction.reply({ embeds: [embed], components: [row] });
         
